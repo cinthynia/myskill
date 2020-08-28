@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="app">
+    <button @click="getData()">{{message}}</button>
+    <ul>
+        <li>userId &nbsp&nbsp userName</li>
+        <li v-for="user in userList" :key="user.userId">
+            {{user.userId}} &nbsp&nbsp {{user.userName}}
+        </li>
+    </ul>
+
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="../static/vue.js"></script>
+<script>
+    let url = "http://localhost:8080/log/test"
+    new Vue({
+        el: '#app',
+        data: {
+            message: "helloha",
+            userList: null
+        },
+        methods:{
+            getData(){
+                fetch(url).then(res=>{
+                        console.log(res)
+                        return res.text()
+                     }).then(res=>{
+                        this.userList = JSON.parse(res) ;
+                        console.log(this.userList)
+                     }).catch(err=>{
+                       console.log(err)
+                })
+            }
+        }
+    })
+</script>
+</html>
