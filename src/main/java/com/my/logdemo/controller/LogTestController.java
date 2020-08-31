@@ -67,7 +67,9 @@ public class LogTestController {
     @RequestMapping("/test")
     @ResponseBody
     public String getList() {
-        return JsonUtil.toJSONString(userService.getAllUserList());
+        String result = JsonUtil.toJSONString(userService.getAllUserList());
+        System.out.println(result);
+        return result;
     }
     @RequestMapping("/insert")
     @ResponseBody

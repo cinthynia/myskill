@@ -16,9 +16,10 @@
 </div>
 </body>
 <!-- import Vue before Element -->
-<script src="../static/vue.js"></script>
+<script src="/static/vue.js"></script>
 <script>
     let url = "http://localhost:8080/log/test"
+    console.log(123)
     new Vue({
         el: '#app',
         data: {
@@ -28,11 +29,11 @@
         methods:{
             getData(){
                 fetch(url).then(res=>{
-                        console.log(res)
                         return res.text()
                      }).then(res=>{
+                         console.log(res)
                         this.userList = JSON.parse(res) ;
-                        console.log(this.userList)
+
                      }).catch(err=>{
                        console.log(err)
                 })
