@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏左</title>
+    <link rel="stylesheet" href="/static/css/titleMenuLeft.css" />
+    <link rel="stylesheet" href="/static/css/common.css" />
+    <script type="text/javascript" src="/static/js/vue.js" ></script>
+</head>
+<body>
+    <div class="body df fdc" id="app">
+        <div class="nav c_bnav df al c_nav">
+            <div class="nav_item f1">
+                <span class = "nav_left_item">项目名称</span>
+            </div>
+            <div class="f1 df jcl">
+                <span class = "nav_right_item">您好，用户！</span>
+            </div>
+        </div>
+        <div class="container df f1 fdr">
+            <div class="menu c_bnav df fdc">
+                <li v-for="(menu,index) in menus" :id="menu.id"
+                    class="menu_item df al jc"
+                    @click="setTab('menu',index,menus)">
+                    {{ menu.text }}
+                </li>
+            </div>
+            <div class="content f1">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var nav = new Vue({
+        el: '#app',
+        data: {
+            menus: [
+                {text: '菜单一'},
+                {text: '菜单二'},
+                {text: '菜单三'},
+                {text: '菜单四'},
+                {text: '菜单五'},
+                {text: '菜单六'}
+            ],
+            nowIndex: 0,
+            menu_index: 1,
+            content: '菜单一'
+        },
+        methods: {
+            setTab(name,index,menus){
+                this.nowIndex = index;
+                this.content = menus[index].text;
+                console.log(menus[index])
+                //this.menu_index = index + 1;
+            }
+        }
+    });
+</script>
+</html>

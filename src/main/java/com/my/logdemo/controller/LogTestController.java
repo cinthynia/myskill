@@ -87,4 +87,9 @@ public class LogTestController {
         modelMap.addAttribute("userList",userService.getAllUserList());
         return "hello";
     }
+    @RequestMapping("/menu")
+    public String getMenu(ModelMap modelMap ) {
+       // modelMap.addAttribute("userList",userService.getAllUserList());
+        return "menu";
+    }
 }
